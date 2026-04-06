@@ -6,79 +6,21 @@ import { usePathname } from "next/navigation";
 const navItems = [
   {
     section: "Getting Started",
-    links: [
-      {
-        href: "/",
-        label: "Overview",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <rect x="2" y="2" width="5" height="5" rx="1" />
-            <rect x="9" y="2" width="5" height="5" rx="1" />
-            <rect x="2" y="9" width="5" height="5" rx="1" />
-            <rect x="9" y="9" width="5" height="5" rx="1" />
-          </svg>
-        ),
-      },
-    ],
+    links: [{ href: "/", label: "Overview" }],
   },
   {
     section: "Patterns",
     links: [
-      {
-        href: "/onboarding",
-        label: "Onboarding",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <path d="M8 2v12M2 8h12" strokeLinecap="round" />
-            <circle cx="8" cy="8" r="6" />
-          </svg>
-        ),
-      },
-      {
-        href: "/payments",
-        label: "Payments",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <rect x="1" y="4" width="14" height="9" rx="1.5" />
-            <path d="M1 7h14" strokeLinecap="round" />
-          </svg>
-        ),
-      },
-      {
-        href: "/system-states",
-        label: "System States & Feedback",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <circle cx="8" cy="8" r="6" />
-            <path d="M8 5v3.5l2 2" strokeLinecap="round" />
-          </svg>
-        ),
-      },
+      { href: "/onboarding", label: "Onboarding" },
+      { href: "/payments", label: "Payments" },
+      { href: "/system-states", label: "System States & Feedback" },
     ],
   },
   {
     section: "Reference",
     links: [
-      {
-        href: "/guidelines",
-        label: "UX Guidelines",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <path d="M3 2h8l2 2v10H3V2z" />
-            <path d="M6 6h5M6 9h5M6 12h3" strokeLinecap="round" />
-          </svg>
-        ),
-      },
-      {
-        href: "/changelog",
-        label: "Changelog",
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-            <circle cx="8" cy="8" r="6" />
-            <path d="M8 4.5V8l2.5 1.5" strokeLinecap="round" />
-          </svg>
-        ),
-      },
+      { href: "/guidelines", label: "UX Guidelines" },
+      { href: "/changelog", label: "Changelog" },
     ],
   },
 ];
@@ -87,21 +29,22 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-60 min-w-[240px] bg-bg-secondary border-r border-border-subtle flex flex-col overflow-y-auto">
+    <aside className="w-[232px] min-w-[232px] bg-bg-secondary border-r border-border-subtle flex flex-col overflow-y-auto">
       {/* Header */}
-      <div className="px-[18px] pt-5 pb-3 border-b border-border-subtle">
-        <div className="flex items-center gap-2 text-text-secondary text-xs font-semibold tracking-widest uppercase">
-          <span className="w-2 h-2 rounded-full bg-accent" />
-          UX Patterns
+      <div className="px-4 pt-5 pb-4 border-b border-border-subtle">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-md bg-accent/15 border border-accent/25 flex items-center justify-center flex-shrink-0">
+            <span className="w-2 h-2 rounded-full bg-accent" />
+          </div>
+          <span className="text-[13px] font-semibold text-text-primary tracking-tight">UX Patterns</span>
         </div>
-        <p className="text-[10px] text-text-muted mt-1">v2.4.1 — Next.js</p>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 py-2">
+      <nav className="flex-1 px-2 py-3">
         {navItems.map((group) => (
-          <div key={group.section} className="pt-4 pb-2">
-            <p className="px-[18px] pb-2 text-[10px] font-medium tracking-[0.1em] uppercase text-text-muted">
+          <div key={group.section} className="pt-5 first:pt-2">
+            <p className="px-2 pb-1.5 text-[10px] font-semibold tracking-[0.1em] uppercase text-text-muted/70">
               {group.section}
             </p>
             {group.links.map((link) => {
@@ -110,16 +53,16 @@ export default function Sidebar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-2.5 px-[18px] py-[7px] text-[13px] transition-all border-l-2 ${
+                  className={`flex items-center justify-between px-2 py-[7px] rounded-md text-[13px] transition-all mb-0.5 ${
                     isActive
-                      ? "text-text-primary bg-accent/10 border-accent"
-                      : "text-text-secondary hover:text-text-primary hover:bg-white/[0.03] border-transparent"
+                      ? "text-text-primary bg-accent/10 font-medium"
+                      : "text-text-secondary hover:text-text-primary hover:bg-white/[0.04]"
                   }`}
                 >
-                  <span className={`flex-shrink-0 ${isActive ? "opacity-100" : "opacity-60"}`}>
-                    {link.icon}
-                  </span>
-                  <span className="flex-1">{link.label}</span>
+                  <span className="leading-snug">{link.label}</span>
+                  {isActive && (
+                    <span className="w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                  )}
                 </Link>
               );
             })}
@@ -128,7 +71,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="px-[18px] py-3.5 border-t border-border-subtle">
+      <div className="px-4 py-3.5 border-t border-border-subtle">
         <p className="text-[11px] text-text-muted">Last updated: Apr 01, 2026</p>
       </div>
     </aside>

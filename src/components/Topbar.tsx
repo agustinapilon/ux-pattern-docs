@@ -22,14 +22,6 @@ export default function Topbar() {
         <span className="text-border-default">/</span>
         <span className="text-text-secondary">{crumb}</span>
       </div>
-      <div className="flex gap-2">
-        <button className="text-[11px] px-3 py-[5px] rounded-md border border-border-default bg-white/[0.04] text-text-secondary hover:bg-white/[0.08] hover:text-text-primary transition-all">
-          Edit page
-        </button>
-        <button className="text-[11px] px-3 py-[5px] rounded-md bg-accent text-white border border-accent hover:bg-accent-light transition-all">
-          View on GitHub
-        </button>
-      </div>
     </header>
   );
 }

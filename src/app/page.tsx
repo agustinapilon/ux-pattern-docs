@@ -34,14 +34,14 @@ export default function OverviewPage() {
   return (
     <div className="min-h-screen">
       {/* Hero section */}
-      <div className="px-10 pt-16 pb-14 border-b border-border-subtle">
+      <div className="px-10 pt-14 pb-14 border-b border-border-subtle max-w-4xl">
         <PageTag>Getting started</PageTag>
 
-        <h1 className="text-5xl font-semibold tracking-tight text-text-primary leading-[1.15] mt-4 mb-5 max-w-2xl">
+        <h1 className="text-[32px] font-semibold tracking-tight text-text-primary leading-[1.25] mt-3 mb-4 max-w-xl">
           UX Pattern Library
         </h1>
 
-        <p className="text-lg text-text-secondary leading-relaxed max-w-xl mb-8">
+        <p className="text-base text-text-secondary leading-[1.75] max-w-lg mb-8">
           A structured reference for implementing proven UX patterns in product design.
           Built for Next.js teams shipping fast.
         </p>
@@ -66,7 +66,7 @@ export default function OverviewPage() {
       </div>
 
       {/* Categories section */}
-      <div id="categories" className="px-10 py-12">
+      <div id="categories" className="px-10 py-12 max-w-4xl">
         <h2 className="flex items-center gap-2.5 text-xs font-semibold tracking-widest uppercase text-text-muted mb-6">
           <span className="block w-[3px] h-[13px] bg-accent rounded-sm" />
           Pattern categories
@@ -94,7 +94,7 @@ export default function OverviewPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-text-secondary leading-relaxed">{cat.description}</p>
+                <p className="text-sm text-text-secondary leading-[1.7]">{cat.description}</p>
 
                 {!cat.disabled && (
                   <div className="mt-4 flex items-center gap-1 text-xs text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity">
